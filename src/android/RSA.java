@@ -27,7 +27,7 @@ public class RSA extends AbstractRSA {
             }
             KeyFactory factory = KeyFactory.getInstance(privateKey.getAlgorithm(), KEYSTORE_PROVIDER);
             KeyInfo keyInfo = factory.getKeySpec(privateKey, KeyInfo.class);
-            return true;
+            return keyInfo.isInsideSecureHardware();
         } catch (Exception e) {
             Log.i(TAG, "Checking encryption keys failed.", e);
             return false;
